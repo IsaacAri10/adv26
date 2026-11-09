@@ -1,0 +1,2 @@
+Guarda aquí las fotos (dia01.jpg, dia02.jpg...) y pon su ruta en contenido.js, p. ej. "fotos/dia01.jpg".
+Puedes borrar este archivo.

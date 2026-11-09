@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nuestro Adviento</title>
+<meta name="theme-color" content="#101a2b">
+<meta property="og:title" content="Nuestro Adviento">
+<meta property="og:description" content="24 sobres. Uno cada día de diciembre.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='14' width='56' height='40' rx='3' fill='%23efe5d3'/%3E%3Cpath d='M4 14h56L32 38z' fill='%23e2d4ba'/%3E%3Ccircle cx='32' cy='38' r='11' fill='%23b3303a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Rethink+Sans:wght@400;500;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!--CUERPO-->
+<canvas id="nieve" aria-hidden="true"></canvas>
+<main id="inicio" class="wrap">
+  <header class="top">
+    <span class="eyebrow" id="ano">Diciembre</span>
+    <h1>Nuestro Adviento</h1>
+    <span class="aviso" id="aviso" hidden></span>
+  </header>
+  <section id="hoy" aria-label="Hoy"></section>
+  <section class="grid" id="sobres" aria-label="Los 24 sobres"></section>
+  <p class="pie">Cada sobre se abre a medianoche, hora de Madrid.</p>
+</main>
+<div id="dia" class="dayview" hidden></div>
+<div id="toast" class="toast" role="status" hidden></div>
+<script src="contenido.js"></script>
+<script src="app.js"></script>
+<!--/CUERPO-->
+</body>
+</html>
