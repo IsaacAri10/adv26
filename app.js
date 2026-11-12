@@ -6,7 +6,7 @@
   var DIAS = C.dias || {};
   var FIRMA = C.firma || "";
   var TIPOS = { mensaje: "Una carta", sobre: "Del paquete", post: "Encontrado para ti", video: "Un vídeo",
-                preguntas: "Para conocernos", quiz: "Un juego", memoria: "Un juego", historia: "Una historia", vales: "Para canjear", puzle: "Un juego", candado: "Un juego", wordle: "Un juego" };
+                preguntas: "Para conocernos", tarjetas: "Para ti", quiz: "Un juego", memoria: "Un juego", historia: "Una historia", vales: "Para canjear", puzle: "Un juego", candado: "Un juego", wordle: "Un juego" };
   var SEMANA = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
 
   function $(s) { return document.querySelector(s); }
@@ -130,6 +130,10 @@
         return t + "<p>" + esc(d.intro || "") + '</p><div class="qcard" id="qc"></div>' +
           '<div class="qnav"><span class="qcount" id="qn"></span><span class="row" style="margin:0">' +
           '<button type="button" class="btn ghost" id="qp">Anterior</button><button type="button" class="btn" id="qx">Siguiente</button></span></div>';
+      case "tarjetas":
+        return t + (d.intro ? "<p>" + esc(d.intro) + "</p>" : "") + '<div class="qcard" id="qc"></div>' +
+          '<div class="qnav"><span class="qcount" id="qn"></span><span class="row" style="margin:0">' +
+          '<button type="button" class="btn ghost" id="qp">Anterior</button><button type="button" class="btn" id="qx">Siguiente</button></span></div>';
       case "historia":
         return t + '<div class="historia' + (d.mano ? " mano" : "") + '">' + (d.bloques || []).map(bloque).join("") + "</div>";
       case "puzle":
@@ -173,13 +177,14 @@
       '<button type="button" class="navb" id="ant" aria-label="Día anterior"' + (prev ? "" : " disabled") + ">‹</button>" +
       '<span class="navd">' + n + " dic</span>" +
       '<button type="button" class="navb" id="sig" aria-label="Día siguiente"' + (next ? "" : " disabled") + ">›</button></div></div>" +
-      '<article class="sheet' + (conSangria(d) ? " sangria" : "") + '"><header class="dayhead"><span class="d">' + n + '</span><span class="k">' + esc(TIPOS[d.tipo] || TIPOS.mensaje) + "<br>" + fecha(n) + "</span></header>" +
+      '<article class="sheet' + (conSangria(d) ? " sangria" : "") + '"><header class="dayhead"><span class="d">' + n + '</span><span class="k">' + esc(d.etiqueta || TIPOS[d.tipo] || TIPOS.mensaje) + "<br>" + fecha(n) + "</span></header>" +
       cuerpo(d) + extras(d) + "</article>";
     $("#inicio").hidden = true; $("#dia").hidden = false; window.scrollTo(0, 0);
     $("#volver").onclick = volver;
     if (prev) $("#ant").onclick = function () { location.replace("#dia-" + prev); };
     if (next) $("#sig").onclick = function () { location.replace("#dia-" + next); };
     if (d.tipo === "preguntas") preguntas(d.preguntas || []);
+    if (d.tipo === "tarjetas") preguntas(d.tarjetas || [], d);
     if (d.tipo === "quiz") quiz(d);
     if (d.tipo === "memoria") memoria(d);
     if (d.tipo === "vales") vales(d, n);
@@ -196,11 +201,30 @@
   }
 
   /* ---- juegos ---- */
-  function preguntas(q) {
+  function preguntas(q, o) {
+    o = o || {};
     var i = 0, c = $("#qc"), nEl = $("#qn"), p = $("#qp"), x = $("#qx");
-    function draw() { c.textContent = q[i] || ""; nEl.textContent = (i + 1) + " de " + q.length; p.disabled = i === 0; x.textContent = i === q.length - 1 ? "Volver a la primera" : "Siguiente"; }
+    var modo = o.contador === undefined ? "numeros" : o.contador;   // "numeros" | "puntos" | false
+    var sig = o.siguiente || "Siguiente", ant = o.anterior || "Anterior";
+    var ult = o.ultima === undefined ? (o.tipo ? null : "Volver a la primera") : o.ultima;  // null = no hay botón en la última
+    p.textContent = ant;
+    if (ult === false || ult === "") ult = null;
+    function txt(v) { return Array.isArray(v) ? v.join("\n\n") : (v || ""); }
+    function draw() {
+      var t = txt(q[i]);
+      c.textContent = t; c.style.whiteSpace = "pre-line";
+      c.classList.toggle("larga", t.length > 110);
+      if (modo === "puntos") {
+        nEl.innerHTML = q.map(function (_, k) { return '<i class="dot' + (k === i ? " on" : "") + '"></i>'; }).join("");
+        nEl.setAttribute("aria-label", (i + 1) + " de " + q.length);
+      } else nEl.textContent = modo === false ? "" : (i + 1) + " de " + q.length;
+      p.disabled = i === 0;
+      var last = i === q.length - 1;
+      if (last) { x.textContent = ult || sig; x.hidden = ult === null; } else { x.textContent = sig; x.hidden = false; }
+    }
     p.onclick = function () { if (i > 0) { i--; draw(); } };
-    x.onclick = function () { i = (i + 1) % q.length; draw(); };
+    x.onclick = function () { i = last() ? 0 : i + 1; draw(); };
+    function last() { return i === q.length - 1; }
     draw();
   }
   /* mensaje final según la nota: finales = [{ desde: 0, texto: "..." }, { desde: 2, texto: "..." }]

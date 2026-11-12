@@ -48,23 +48,29 @@ window.ADVIENTO = {
     2: { // Preguntas para conocernos mejor
       tipo: "preguntas",
       titulo: "Preguntas para conocernos mejor",
-      intro: "Esta noche, en la llamada, contestamos los dos. Pasa a la siguiente cuando terminemos cada una.",
+      intro: "Esta noche, en la llamada, contestamos los dos. Si quieres, puedes echarles un ojo para ir pensando una respuesta. Pasa a la siguiente cuando terminemos cada una.",
       preguntas: [
         "¿Cuál es el primer recuerdo que tienes de mí?",
-        "Si mañana tuviéramos el día libre en la misma ciudad, ¿qué plan harías?",
-        "¿Qué canción te recuerda a nosotros?",
-        "¿Qué es algo pequeño que hago y que te gusta más de lo que crees?",
-        "¿A dónde te gustaría que viajáramos el año que viene?"
+        "¿Qué momento te hizo sentir por primera vez que esto iba en serio?",
+        "¿Qué costumbre tuya tendría que aprender a querer alguien que viva contigo?",
+        "¿Qué es lo que más te gusta de ti? ¿Y lo que menos?",
+        "¿Qué es algo pequeño que hago y que te gusta mucho?",
+        "¿Qué conversación crees que deberíamos tener que no hayamos tenido? "
       ]
     },
 
     3: { // Cosas que me gustan de ti
-      tipo: "historia",
-      // mano: true,   // descomenta para que el texto salga con letra a mano
-      bloques: [
-        "Todo empezó con un mensaje que yo no sabía cómo contestar.",
-        { foto: "fotos/ambrona.JPEG", pie: "Ese día, en esa calle" },
-        "Otro párrafo cualquiera.",
+      tipo: "tarjetas",
+      etiqueta: "Para ti",
+      titulo: "Cosas que me gustan de ti",
+      intro: "Cosas que me gustan de ti",
+      contador: "puntos",
+      ultima: null,
+      tarjetas: [
+        "Que me digas te pienso mucho",
+        "Segundo mensaje.",
+        ["Una tarjeta con varios párrafos.", "Se separan con una línea en blanco."],
+        "Último mensaje."
       ]
     },
 
@@ -77,11 +83,13 @@ window.ADVIENTO = {
 
     5: { // Cuaderno compartido
       tipo: "historia",
-      // mano: true,   // descomenta para que el texto salga con letra a mano
       bloques: [
-        "Todo empezó con un mensaje que yo no sabía cómo contestar.",
-        { foto: "fotos/ambrona.JPEG", pie: "Ese día, en esa calle" },
-        "Otro párrafo cualquiera.",
+        "Buenos días amor.",
+        "Abre el paquete con el número 5, después sigue leyendo.",
+        "La idea es que entre los dos vayamos escribiendo un diario o algo asi para que aunque no estemos juntos pues nos sintamos un poquito más cerca.",
+        "Es fácil, cada mes (esto pues lo vamos cuadrando con las fechas en las que quedemos) uno de nosotros tendrá el cuaderno y pondrá en el lo que le apetezca: cosas que nos han pasado en esos días, cosas que nos hayan recordado al otro, fotos... Al mes siguiente, pues yo leeré lo que has puesto tú y me tocará escribir a mi.",
+        "A ver qué tal sale, teniendo en cuenta mi letra y mi poco arte...",
+        "Te quiero mucho"
       ]
     },
 
@@ -132,12 +140,12 @@ window.ADVIENTO = {
       tipo: "memoria",
       titulo: "Memory de nosotros",
       intro: "Encuentra las seis parejas de fotos. Cuando las tengas todas, sabrás qué toca abrir.",
-      fotos: ["fotos/memoria-1.jpg", "fotos/memoria-2.jpg", "fotos/memoria-3.jpg",
+      fotos: ["fotos/puzle.jpg", "fotos/ambronajpg", "fotos/2.jpg",
               "fotos/memoria-4.jpg", "fotos/memoria-5.jpg", "fotos/memoria-6.jpg"],
       premio: "Premio desbloqueado: abre ahora el sobre de la colonia."
     },
 
-    11: { // Cuaderno compartido
+    11: { // Captura conversaciones
       tipo: "historia",
       // mano: true,   // descomenta para que el texto salga con letra a mano
       bloques: [
@@ -152,7 +160,7 @@ window.ADVIENTO = {
       titulo: "Ordena la foto",
       intro: "Toca las piezas que están al lado del hueco para moverlas hasta recomponer la foto.",
       foto: "fotos/puzle.jpg",
-      premio: "Lo has conseguido. Ahora puedes abrir el sobre del libro."
+      premio: "Lo has conseguido. Ahora puedes abrir el paquete con el número 12."
     },
 
     13: { // Relaciones a distancia
@@ -166,12 +174,17 @@ window.ADVIENTO = {
     },
 
     14: { // Clases de catalan
-      tipo: "historia",
-      // mano: true,   // descomenta para que el texto salga con letra a mano
-      bloques: [
-        "Todo empezó con un mensaje que yo no sabía cómo contestar.",
-        { foto: "fotos/ambrona.JPEG", pie: "Ese día, en esa calle" },
-        "Otro párrafo cualquiera.",
+      tipo: "tarjetas",
+      etiqueta: "Clases de catalán",
+      titulo: "Clases de catalán",
+      intro: "Tenemos catalán esta noche, que tendré que poder hablar con tu madre... A continuación aparecerán una serie de frases en español que me tienes que enseñar a escribir y decir en catalán.",
+      contador: "puntos",
+      ultima: null,
+      tarjetas: [
+        "Que me digas te pienso mucho",
+        "Segundo mensaje.",
+        ["Una tarjeta con varios párrafos.", "Se separan con una línea en blanco."],
+        "Último mensaje."
       ]
     },
 
@@ -201,11 +214,10 @@ window.ADVIENTO = {
 
     17: { // Crucigrama
       tipo: "sobre",
-      numero: 3,
-      titulo: "Hoy toca paquete",
+      numero: 17,
+      titulo: "Esperemos que te gusten los pasatiempos...",
       texto: [
-        "Ve al paquete y busca el sobre con el número 3.",
-        "Los demás, quietos hasta su día 😉"
+        "Ve al paquete y busca el sobre con el número 17."
       ]
     },
 
@@ -213,19 +225,23 @@ window.ADVIENTO = {
       tipo: "mensaje",
       texto: [
         "Buenos días amor.",
+        "En la caja verás un sobre acolchado con el número 18. Tranqui, no hay nada dentro, no es que se me haya ovidado. Yo tengo otro en casa igual.",
+        "Vamos a hacer una cápsula del tiempo. La idea es que cada uno escriba cosas que quieren que pasen o que esperan de 2027. Después tú me das la tuya y yo te doy la mía y el año que viene por Navidad las abrimos.",
+        "Esta noche decidimos sobre qué escribir y cómo hacerlo.",
+        "Te amo cariño."
       ]
     },
 
     19: { // Peluche
       tipo: "candado",
       titulo: "El candado",
-      intro: "Para abrir el sobre del peluche necesitas la combinación de cuatro cifras.",
-      codigo: "1412",
-      pistas: ["Es una fecha: día y mes.", "Es el día en que nos conocimos.", "Fue en diciembre."],
-      premio: "Candado abierto. Ya puedes coger el sobre del peluche."
+      intro: "Para abrir el siguiente paquete necesitas una combinación de cuatro cifras. No tiene rima.",
+      codigo: "3010",
+      pistas: ["Es una fecha: día y mes.", "Te enfadaste porque dije que eras mi amiga.", "Te pedí que fueses mi novia."],
+      premio: "Candado abierto. Ya puedes abrir el paquete del día 19."
     },
 
-    20: { // Hacer planes juntos o post, ya veremos
+    20: { // Pensar nuestra vida juntos
       tipo: "historia",
       // mano: true,   // descomenta para que el texto salga con letra a mano
       bloques: [
@@ -245,10 +261,13 @@ window.ADVIENTO = {
       ]
     },
 
-    22: { // Cápsula del tiempo
+    22: { // Vídeo con fotos de cada hora
       tipo: "mensaje",
       texto: [
         "Buenos días amor.",
+        "Hoy vamos a hacer el vídeo este de pasarnos una foto cada hora para ver como de diferentes son nuestros días. Asi que ya sabes, tienes que pasarme una foto cada hora para que después podamos hacer el vídeo.",
+        "Acepto propuestas para hacer más trends de estos en pareja.",
+        "Te quiero mucho cielo."
       ]
     },
 
