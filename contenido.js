@@ -68,7 +68,7 @@ window.ADVIENTO = {
       ultima: null,
       tarjetas: [
         "Que me digas te pienso mucho",
-        "Segundo mensaje.",
+        ["Que me cuentes con todo lujo de detalles cosas que te hacen muchísima ilusión.", "Se me cae la baba mirándote."],
         ["Una tarjeta con varios párrafos.", "Se separan con una línea en blanco."],
         "Último mensaje."
       ]
@@ -77,7 +77,15 @@ window.ADVIENTO = {
     4: { // Noche de anécdotas
       tipo: "mensaje",
       texto: [
-        "Buenos días amor."
+        "Buenos días amor.",
+        "Una de las cosas que más me gustan de ti (como ya leiste ayer) es que me cuentes alguna anédocta como en Zaragoza cuando me contaste el viaje a Marruecos o en Lleida cuando me contaste lo del proyecto del viaje a la India con los niños del cole.",
+        "Pues esta noche vamos a hacer noche de anécdotas.",
+        "¿En qué consiste? Esta noche cuando nos llamemos tendremos que contarnos alguna anécdota que cumpla relacionada con los tres temas que pongo aqui debajo:",
+        "· Algo que te pasó de pequeña y que tu familia sigue contando.",
+        "· Un cumpleaños que recuerdes mucho (no hace falta que sea tuyo).",
+        "· Un viaje que no sea el de Marruecos.",
+        "Tienes tooodo el día para pensartelo, si de alguno de los temas no se te ocurre ninguna, me debes una de un tema que tú elijas.",
+        "Que tengas buen día cielo, te quiero."
       ]
     },
 
@@ -104,28 +112,35 @@ window.ADVIENTO = {
     },
 
     7: { // Noche de poesía
-      tipo: "post",
-      titulo: "Esto me hizo pensar en ti",
-      texto: ["Me lo encontré el otro día y me acordé de ti al instante."],
-      captura: { src: "", pie: "" },
-      enlace: "https://example.com",
-      boton: "Ver el post",
-      paquete: 2
+        tipo: "post",
+        titulo: "Esto me hizo pensar en ti",
+        texto: ["Texto que sale arriba."],
+        instagram: "https://www.instagram.com/reel/Dfnl13ICgHW/",
+        despues: ["Texto que sale debajo.", "Puedes poner varios párrafos."]
     },
 
     8: { // Preguntas sobre mi
       tipo: "quiz",
       titulo: "¿Cuánto me conoces?",
       preguntas: [
-        { p: "¿Cuál es mi comida favorita?", o: ["Pizza", "Paella", "Sushi", "Tortilla de patatas"], ok: 1 },
-        { p: "¿Dónde fue nuestra primera cita?", o: ["En un bar", "En el cine", "Paseando", "En un restaurante"], ok: 2 },
-        { p: "¿Qué haría yo un domingo perfecto?", o: ["Fútbol y sofá", "Ir a la montaña", "Dormir hasta las 12", "Todo lo anterior"], ok: 3 }
+        { p: "¿Cuál es mi comida favorita?", o: ["Empanada de mi madre", "Hamburguesas", "Paella de Navalpotro", "Tortilla de patatas"], ok: 1 },
+        { p: "¿Cuál es mi color favorito?", o: ["Rojo", "Amarillo", "Azul", "Verde"], ok: 4 },
+        { p: "¿Cuál es mi serie favorita?", o: ["Juego de Tronos", "Cómo conocí a vuestra madre", "La casa de papel", "The Big Bang Theory"], ok: 2},
+        { p: "¿Qué deporte practicaba de pequeño?", o: ["Fútbol", "Atletismo", "Hockey", "Petanca"], ok: 3 },
+        { p: "¿Cómo se llama mi madre?", o: ["Manuela", "Antonia", "Francisca", "Jacinta"], ok: 4 },
+        { p: "Si tuviera que hacer un viaje, ¿cuál crees que haría?", o: ["Mochilero por Tailandia", "Camper por Islandia", "Todo incluido en el Caribe", "Visitar Nueva York"], ok: 2 },
+        { p: "¿Qué hago cuando no sé qué cenar?", o: ["Pido algo a domicilio", "Ceno leche con cereales", "Le pregunto a mi madre", "Me voy a la cama sin cenar"], ok: 2 },
+        { p: "¿Cómo se llama mi aldea?", o: ["Mures", "Venta Agramaderos", "Venta Valero", "La Pedriza"], ok: 2 },
+        { p: "¿De qué color es la camiseta que llevaba el día que nos liamos?", o: ["Azul marino", "Negra", "Rosa", "Gris"], ok: 1 },
+        { p: "¿Cuántos tattoos tengo?", o: ["14", "11", "13", "12"], ok: 3 }
       ],
       finales: [
-        { desde: 0, texto: "Cero aciertos... Vamos a tener que pasar más tiempo juntos." },
-        { desde: 1, texto: "Uno solo. Aún estás a tiempo de ponerte las pilas." },
-        { desde: 2, texto: "Casi perfecto. Se nota que me prestas atención." },
-        { desde: 3, texto: "Pleno. Me conoces mejor que yo mismo." }
+        { desde: 0, texto: "Si pasa esto es que no me quieres nada de nada..." },
+        { desde: 4, texto: "Suspenso alto altísimo, pero ahí te quedas." },
+        { desde: 5, texto: "Un 5 son 6 créditos. Aprobado justito." },
+        { desde: 6, texto: "Parece que algo me escuchas, no está mal del todo." },
+        { desde: 8, texto: "Notable alto. Muy bien cariño, eres la mejor." },
+        { desde: 10, texto: "Matrícula!! Esto si que no me lo esperaba, te debo una cena en el restaurante que tú elijas. Te quiero mucho!" }
       ]
     },
 
@@ -140,9 +155,9 @@ window.ADVIENTO = {
       tipo: "memoria",
       titulo: "Memory de nosotros",
       intro: "Encuentra las seis parejas de fotos. Cuando las tengas todas, sabrás qué toca abrir.",
-      fotos: ["fotos/puzle.jpg", "fotos/ambronajpg", "fotos/2.jpg",
-              "fotos/memoria-4.jpg", "fotos/memoria-5.jpg", "fotos/memoria-6.jpg"],
-      premio: "Premio desbloqueado: abre ahora el sobre de la colonia."
+      fotos: ["fotos/mdz1.jpg", "fotos/ambrona.jpg", "fotos/zgz2.jpg",
+              "fotos/ll3.jpg", "fotos/mdz4.jpg", "fotos/zgz1.jpg"],
+      premio: "Premio desbloqueado: abre ahora el paquete del día 10."
     },
 
     11: { // Captura conversaciones
@@ -181,7 +196,7 @@ window.ADVIENTO = {
       contador: "puntos",
       ultima: null,
       tarjetas: [
-        "Que me digas te pienso mucho",
+        "Estoy tieso.",
         "Segundo mensaje.",
         ["Una tarjeta con varios párrafos.", "Se separan con una línea en blanco."],
         "Último mensaje."

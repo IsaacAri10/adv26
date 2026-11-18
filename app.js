@@ -86,6 +86,16 @@
     return "<p" + (cls ? ' class="' + cls + '"' : "") + ">" + esc(t) + "</p>";
   }
   function parrafos(a) { return (a || []).map(function (t) { return par(t); }).join(""); }
+  /* Instagram: acepta el enlace completo o solo el ID. Se incrusta si la publicación es pública. */
+  function instagram(v) {
+    if (!v) return "";
+    var m = String(v).match(/instagram\.com\/(reel|reels|p|tv)\/([\w-]+)/i), tipo = "reel", id = String(v).trim();
+    if (m) { tipo = m[1].toLowerCase() === "p" ? "p" : (m[1].toLowerCase() === "tv" ? "tv" : "reel"); id = m[2]; }
+    if (!/^[\w-]+$/.test(id)) return "";
+    var url = "https://www.instagram.com/" + tipo + "/" + id + "/";
+    return '<div class="ig"><iframe src="' + url + 'embed/" title="Publicación de Instagram" loading="lazy" allowtransparency="true" allowfullscreen scrolling="no"></iframe></div>' +
+      '<div class="row">' + boton(url, "Abrir en Instagram ↗", "ghost") + "</div>";
+  }
   function foto(f, i) {
     if (typeof f === "string") f = { src: f };
     f = f || {};
@@ -117,8 +127,10 @@
       case "sobre":
         return t + '<div class="bigno">' + esc(d.numero) + '</div><div class="hand">' + parrafos(d.texto) + "</div>";
       case "post":
-        return t + parrafos(d.texto) + (d.captura ? foto(d.captura, 0) : "") +
-          (d.enlace ? '<div class="row">' + boton(d.enlace, (d.boton || "Abrir") + " ↗") + "</div>" : "");
+        var ig = instagram(d.instagram);
+        return t + parrafos(d.texto) + (ig ? ig : "") + (d.captura ? foto(d.captura, 0) : "") +
+          (d.enlace ? '<div class="row">' + boton(d.enlace, (d.boton || "Abrir") + " ↗") + "</div>" : "") +
+          (d.despues ? '<div class="despues">' + parrafos(d.despues) + "</div>" : "");
       case "video":
         var v;
         if (d.youtube) v = '<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/' + esc(d.youtube) + '?rel=0&playsinline=1" title="Vídeo" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>' +
