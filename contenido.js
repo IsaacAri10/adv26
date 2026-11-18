@@ -113,10 +113,12 @@ window.ADVIENTO = {
 
     7: { // Noche de poesía
         tipo: "post",
-        titulo: "Esto me hizo pensar en ti",
-        texto: ["Texto que sale arriba."],
-        instagram: "https://www.instagram.com/reel/Dfnl13ICgHW/",
-        despues: ["Texto que sale debajo.", "Puedes poner varios párrafos."]
+        titulo: "Noche de poesía.",
+        instagram: "https://www.instagram.com/reel/DfdCgaeokDw/?obrf=MXZrYmIydWZyNTNlaw==",
+        despues: ["Buenos días amor.", "Esta noche toca noche de poesías. No se si recuerdas el reel que te pasé de ir a comprar el mismo libro de poesías y escribirnos cosas dentro y luego cambiarnoslo, pues viendo ese post se me ocurrió esto.",
+                  "Hoy no lo podremos hacer así, pero ese plan queda pendiente. La idea es que a lo largo del día busquemos cada uno una poesía (o varias) que nos recuerden a nosotros y esta noche en la llamada leernosla y explicarnos el por qué la hemos elegido.",
+                  "Me encantaría que quedase por escrito de alguna manera en una nota o en un papelito o algo así.", "Te quiero con locura"
+        ]
     },
 
     8: { // Preguntas sobre mi
